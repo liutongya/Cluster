@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#SBATCH --account=ocp
+#SBATCH -p ocp
+#SBATCH -N 1
+#SBATCH -J notebook
+#SBATCH --time=12:00:00
+#SBATCH --exclusive
+
+# Setup Environment
+#module load anaconda
+#export PATH="$HOME/miniconda/bin:$PATH"
+source activate geo_scipy
+
+export XDG_RUNTIME_DIR=""
+
+jupyter notebook --no-browser --ip "0.0.0.0" \
+  --notebook-dir $HOME
