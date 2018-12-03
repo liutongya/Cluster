@@ -1,1 +1,13 @@
+source activate geo_scipy
+
+git clone https://github ...
+
+git remote -v
+
+git remote add upsteam https://github.com/TEOS-10/python-gsw.git
+
+git remote -v
+
+python setup.py build
+python setup.py develop
 
