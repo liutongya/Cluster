@@ -7,3 +7,6 @@ https://rabernat.github.io/research_computing/introduction-to-the-habanero-hpc-c
 # Running Jupyter Notebooks on Habanero
 https://rabernat.github.io/research_computing/running-jupyter-notebooks-on-habanero.html
 
+# Python class
+https://rabernat.github.io/research_computing_2018/
+
