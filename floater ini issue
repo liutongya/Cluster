@@ -1,1 +1,26 @@
 http://mailman.mitgcm.org/pipermail/mitgcm-support/2012-April/007727.html
+
+
+There are several options:
+1) not changing the code, starting with nIter0=0 and to replace
+ the main pickup files with a set of initial conditons files 
+  (pSurfInitFile= ..., hydrogThetaFile= ..., hydrogSaltFile= ..., 
+  uVelInitFile= ..., vVelInitFile= ...) corresponding to what is stored 
+ in the pickup file.
+2) generate a "pickup_flt" file yourself. It's very similar to float
+ initial condition file (if mapIniPos2Index is set to False); 
+ But since you were probably prepared to use the default (which is 
+  mapIniPos2Index=T), you will have do the conversion yourself when
+ generating this pickup_flt file, that is to give float position in index 
+ space instead of distances (and 1 file per tile, since this does not work 
+ with global files).
+3) modify flt_init_varia.F to read float initial conditions 
+  even when nIter0 <> 0  and generate a modified "mitgcmuv" executable.
+  You will used this modified executable to start the float simulation 
+  but will have to return to the un-modified one to continue after a restart.
+4) try this trick: since flt_init_varia.F does not recognize pickupSuff, 
+  you could try the following:
+  a) set nIter0=0 and pickupSuff= {the name of your pickup file} in 
+     main parameter file "data", 3rd namelist.
+  b) use normal float initial conditions file.
+ let me know if this 4th solution does not work.
