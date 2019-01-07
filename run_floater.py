@@ -2,7 +2,7 @@
 #
 #SBATCH --account=ocp
 #SBATCH --job-name=lagrangian_advection
-#SBATCH --time=02:00:00
+#SBATCH --time=06:00:00
 #SBATCH --exclusive
 #SBATCH --nodes=8
 
