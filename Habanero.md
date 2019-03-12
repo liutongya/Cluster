@@ -10,5 +10,5 @@ https://rabernat.github.io/research_computing/running-jupyter-notebooks-on-haban
 # Python class
 https://rabernat.github.io/research_computing_2018/
 
-# globus
+# Globus
 https://app.globus.org/activity
