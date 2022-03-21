@@ -1,0 +1,29 @@
+
+1. launch.sh
+--------------------------------------------------------------
+#PBS -S /usr/bin/bash
+#PBS -l nodes=1:ppn=8
+#PBS -l walltime=96:00:00
+#PBS -j oe
+#PBS -o ./
+#PBS -m bea
+cd $PBS_O_WORKDIR
+
+cat $PBS_NODEFILE | uniq -c | awk '{ printf("%s:%s\n", $2, $1); }' >> $PBS_JOBID-$PBS_JOBCOOKIE.hosts
+NP=`cat $PBS_NODEFILE|wc -l`
+
+#EXEC=../build_large/mitgcmuv
+echo $NP
+#mpirun  -machinefile $PBS_JOBID-$PBS_JOBCOOKIE.hosts  -np $NP ./mitgcmuv
+
+source activate geo_scipy
+
+NOTEBOOK_LOGFILE=jupyterlog.out
+
+jupyter lab --port=8892 --notebook-dir $HOME >> ${NOTEBOOK_LOGFILE} 2>&1
+
+---------------------------------------------------------------
+
+2. qsub launch.sh
+
+3. ssh -L 9999:node4:8892 liutongya@172.16.10.133
